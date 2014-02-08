@@ -10,23 +10,23 @@
 int main(int argc, char *argv[])
 {
         int fd_in, fd_out;
-        int pipefd[2];
+        char buf[BUFSIZE];
         struct timeval t0, t1;
 
-        setup(&fd_in, &fd_out, pipefd);
+        setup(&fd_in, &fd_out, NULL);
 
         CHECK_ERROR(-1, gettimeofday(&t0, NULL));
         
         for (int i = 0; i < BENCHNUM; i++) {
-                run_splice(fd_in, fd_out, pipefd);
+                run_readwrite(fd_in, fd_out, buf);
         }
-        
+
         CHECK_ERROR(-1, gettimeofday(&t1, NULL));
         
         int diff = get_diff(&t0, &t1);
 
-        printf("====== BENCH SPLICE ======\n");
-        printf("bench splice: %d us / %d ops\n", diff, BENCHNUM);
+        printf("====== BENCH READWRITE ======\n");
+        printf("bench readwrite: %d us / %d ops\n", diff, BENCHNUM);
         
         return 0;
 }

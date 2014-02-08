@@ -1,16 +1,17 @@
-BUFSIZE := 4096
-BENCHNUM := 100000
+BUFSIZE := 4096*1024
+BENCHNUM := 1000
 
 SRC := bench.c
 OBJ := bench.o
 HEADER := bench.h
 
 all: obj
-	@gcc -I./ -std=c99 -DBUFSIZE=$(BUFSIZE) -DBENCHNUM=$(BENCHNUM) benchsplice.c $(OBJ)
+	@echo "start benching, it will take a couple of minutes..."
+	@gcc -I./ -std=c99 -DBUFSIZE=$(BUFSIZE) -DBENCHNUM=$(BENCHNUM) benchreadwrite.c $(OBJ)
 	@./a.out
 	@rm a.out
 
-	@gcc -I./ -std=c99 -DBUFSIZE=$(BUFSIZE) -DBENCHNUM=$(BENCHNUM) benchreadwrite.c $(OBJ)
+	@gcc -I./ -std=c99 -DBUFSIZE=$(BUFSIZE) -DBENCHNUM=$(BENCHNUM) benchsplice.c $(OBJ)
 	@./a.out
 	@rm a.out
 

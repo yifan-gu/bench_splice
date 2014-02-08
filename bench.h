@@ -20,3 +20,4 @@ void run_splice(int fd_in, int fd_out, int *pipefd);
 void run_readwrite(int fd_in, int fd_out, char *buf);
 void run_sendfile(int fd_in, int fd_out);
 int get_diff(struct timeval *before, struct timeval *later);
+void print_result(int diff);

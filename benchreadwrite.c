@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         int diff = get_diff(&t0, &t1);
 
         printf("====== BENCH READWRITE ======\n");
-        printf("bench readwrite: %d us / %d ops\n", diff, BENCHNUM);
+        print_result(diff);
         
         return 0;
 }

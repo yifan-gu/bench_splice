@@ -1,12 +1,13 @@
 bench_splice
 ============
 
-a simple bench for splice vs read/write in C
+A simple bench for splice vs read/write in C
+
+* Please make sure you have enough space in /run/shm
 
 To run:
 
-
 ``` bash
-$ dd if=/dev/urandom of=/tmp/in bs=4M count=100
-$ make
+$ dd if=/dev/urandom of=/run/shm/in bs=4M count=1
+$ sudo make
 ```

@@ -5,7 +5,7 @@ void run_readwrite(int, int, char *);
 void setup(int *fd_in, int *fd_out, int *pipefd)
 {
         char buf[BUFSIZE];
-        
+
         *fd_in = open("/run/shm/in", O_RDONLY);
         if (*fd_in < 0) {
                 error_at_line(-1, errno, __FILE__, __LINE__, NULL);
@@ -41,7 +41,7 @@ void run_readwrite(int fd_in, int fd_out, char *buf)
 {
         CHECK_ERROR(-1, lseek(fd_in, 0, SEEK_SET));
         CHECK_ERROR(-1, lseek(fd_out, 0, SEEK_SET));
-        
+
         CHECK_ERROR(-1, read(fd_in, buf, BUFSIZE));
         CHECK_ERROR(-1, write(fd_out, buf, BUFSIZE));
 }
@@ -50,7 +50,7 @@ void run_sendfile(int fd_in, int fd_out)
 {
         CHECK_ERROR(-1, lseek(fd_in, 0, SEEK_SET));
         CHECK_ERROR(-1, lseek(fd_out, 0, SEEK_SET));
-        
+
         CHECK_ERROR(-1, sendfile(fd_out, fd_in, NULL, BUFSIZE));
 }
 

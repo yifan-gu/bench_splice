@@ -1,9 +1,8 @@
 bench_splice
 ============
 
-A simple bench for splice vs read/write in C
+A simple bench comparision between sendfile, splice and read/write.
 
-** Please make sure you have enough space in /run/shm **
 
 To run:
 

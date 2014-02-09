@@ -1,9 +1,9 @@
-BUFSIZE := 4096*1024
-BENCHNUM := 1000
+BUFSIZE = 4096*1024
+BENCHNUM = 1000
 
-SRC := bench.c
-OBJ := bench.o
-HEADER := bench.h
+SRC = bench.c
+OBJ = bench.o
+HEADER = bench.h
 
 all: obj
 	@echo "start benching, it will take a couple of minutes..."
@@ -18,6 +18,7 @@ all: obj
 	@gcc -I./ -std=c99 -DBUFSIZE=$(BUFSIZE) -DBENCHNUM=$(BENCHNUM) benchsendfile.c $(OBJ)
 	@./a.out
 	@rm a.out
+	@rm *.o
 
 obj:
 	@gcc -c -std=c99 -DBUFSIZE=$(BUFSIZE) -DBENCHNUM=$(BENCHNUM) $(SRC) 
